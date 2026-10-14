@@ -1,0 +1,19 @@
+{
+	"provideLibs": [	
+		    "libdummy_binary_liblog.a-x86_64-v2.so",
+		    "libdummy_binary_liblog.a.so",
+		    "libdummy_ext_logging-x86_64-v2.so",
+		    "libdummy_ext_logging.so",
+		    "libdummy_headers_ext_logging-x86_64-v2.so",
+		    "libdummy_headers_ext_logging.so",
+		    "liblog-x86_64-v2.so",
+		    "liblog.so"
+	],
+	"requireLibs": [	
+		    "libc++_shared.so",
+		    "libc.so",
+		    "libdl.so",
+		    "libm.so"
+	],
+	"visible": true
+}
