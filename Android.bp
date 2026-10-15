@@ -44,6 +44,31 @@ cc_prebuilt_library {
     },
 }
 
+rust_library {
+    name: "liblogger",
+    host_supported: true,
+    crate_name: "logger",
+    srcs: ["src/logger.rs"],
+    rustlibs: [
+        "libenv_logger",
+        "liblog_rust",
+    ],
+    vendor_available: true,
+    product_available: true,
+    target: {
+        android: {
+            rustlibs: [
+                "libandroid_logger",
+            ],
+        },
+    },
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+    min_sdk_version: "29",
+}
+
 rust_defaults {
     name: "liblogger_test_defaults",
     crate_name: "logger",
