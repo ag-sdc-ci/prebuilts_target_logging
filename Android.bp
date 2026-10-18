@@ -111,6 +111,8 @@ cc_defaults {
 
 cc_library {
     name: "liblog_for_runtime_apex",
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
     vendor_available: true,
     product_available: true,
     recovery_available: true,
