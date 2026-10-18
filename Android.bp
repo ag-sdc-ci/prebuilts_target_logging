@@ -135,3 +135,33 @@ cc_library {
     ],
 }
 
+
+// Added 2026-10-18 (ag-sdc-ci): rust event list logging; consumers: system/security/keystore2
+rust_bindgen {
+    name: "liblog_event_list_bindgen",
+    wrapper_src: "rust/liblog_wrapper.h",
+    crate_name: "log_event_list_bindgen",
+    source_stem: "bindings",
+    local_include_dirs: ["src/include"],
+    bindgen_flags: [
+        "--allowlist-function=create_android_logger",
+        "--allowlist-function=android_log_destroy",
+        "--allowlist-function=android_log_write_int32",
+        "--allowlist-function=android_log_write_int64",
+        "--allowlist-function=android_log_write_float32",
+        "--allowlist-function=android_log_write_string8_len",
+        "--allowlist-function=android_log_write_list",
+        "--allowlist-function=android_log_write_list_begin",
+        "--allowlist-function=android_log_write_list_end",
+        "--allowlist-function=__android_log_security",
+        "--allowlist-type=log_id",
+    ],
+}
+
+rust_library {
+    name: "liblog_event_list",
+    crate_name: "log_event_list",
+    srcs: ["rust/liblog_event_list.rs"],
+    rustlibs: ["liblog_event_list_bindgen"],
+    shared_libs: ["liblog"],
+}
